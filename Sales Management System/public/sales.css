@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    background-image: url("/back3.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background-color: rgb(251, 253, 253, 0.8);
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    min-height: 360px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+li {
+    margin: 0;
+    padding: 10px;
+    display: inline-block;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); 
+    color: white; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.2s ease; 
+}
+
+li:hover {
+    transform: scale(1.1);
+    cursor: pointer; 
+    background: linear-gradient(135deg, #2575fc, #6a11cb); 
+    color: #fff; 
+}
+label {
+    font-weight: bold;
+}
+input {
+    border-radius: 5px;
+    padding: 6px;
+    width: 60%;
+}
+button {
+    padding: 5px;
+    margin-top: 5px;
+    font-size:medium;
+    cursor: pointer;
+}
+.reset {
+    width: 95px;
+}
+a {
+    font-size: medium;
+    font-weight: bold;
+}
+select {
+    padding: 5px;
+    width: 30%;
+    font-size: medium;
+}
+.btn-link {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+    font-size: large;
+}
+
+.btn-link:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+.manage {
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    color: #2575fc;
+    text-align: center; 
+    margin-bottom: 15px;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    background: linear-gradient(135deg, #6a11cb, #2575fc); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+@media only screen and (max-width: 768px) {
+    body {
+        background-image: url('/back2.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .container {
+        width: 90%;
+        padding: 15px;
+        background-color: rgb(10, 10, 10, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+    }
+    input {
+        width: 85%;
+        padding: 8px;
+        font-size: medium;
+    }
+    textarea {
+        width: 85%;
+        height: 150px;
+    }
+    .manage {
+        font-size: 1.5rem; 
+    }
+}
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url('/back2.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .container {
+        width: 80%;
+        padding: 15px;
+        background-color: rgb(10, 10, 10, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+    }
+    input {
+        width: 85%;
+        padding: 8px;
+        font-size: medium;
+    }
+    textarea {
+        width: 85%;
+        height: 150px;
+    }
+    .manage {
+        font-size: 1.4rem; 
+    }
+}
+@media only screen and (max-width: 480px) {
+    body {
+        background-image: url('/back2.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .container {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(10, 10, 10, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+    }
+    input {
+        width: 85%;
+        padding: 8px;
+        font-size: medium;
+    }
+    textarea {
+        width: 85%;
+        height: 150px;
+    }
+    .manage {
+        font-size: 1.2rem; 
+    }
+}

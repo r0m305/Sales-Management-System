@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sales Management</title>
+        <link rel="stylesheet" href="/sales.css">
+        <link rel="icon" href="/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-app="myApp" ng-controller="myCtrl">
+            <div class="formcontainer" ng-switch="tab">
+                <h2 class="manage"><i class="material-icons" style="font-size:29px;">laptop_chromebook</i> Sales Management System</h2>
+                <ul class="menu">
+                    <li style="width:90%" ng-click="changeDec()"><i class="material-icons" style="font-size:15px">menu</i>Menu</li>
+                </ul>
+                <ul ng-show="showMenu">
+                    <li ng-click="sales_tab()">Sales Form</li>
+                    <li ng-click="search_tab()">Today's Sales</li>
+                    <li ng-click="records_tab()">View Records</li>
+                    <li ng-click="contact_tab()" style="margin-top: 6px;">Contact Us</li>
+                </ul>
+                <div class="forms" ng-switch-when="sales_form">
+                    <form action="/register" method="POST">
+                        <label for="item"><i>Item Sold:</i></label><br>
+                        <input type="text" name="item" id="item" placeholder="Enter item sold" required><br>
+                        <label for="amount">Quantity:</label><br>
+                        <input type="number" name="amount" id="amount" placeholder="Quantity of the item sold"><br>
+                        <label for="price"><i>Price:</i></label><br>
+                        <input style="margin-bottom: 7px;" type="number" name="price" id="price" placeholder="Price of the item" required><br>
+                        <button type="submit"><i class="material-icons" style="font-size: 15px;">content_paste</i>Record Sale</button>
+                        <button class="reset" type="button" ng-click="resetForm()"><i class="material-icons" style="font-size: 15px;">cached</i>Reset</button>
+                    </form><br>
+                    <a href="/stock" target="_blank"><i class="material-icons" style="font-size:17px">send</i>Go to stock management</a>
+                </div>
+                <div class="forms" ng-switch-when="search_form">
+                    <a href="/todaysales"><i class="material-icons">business_center</i>View today's sales</a><br><br>
+                    <a href="/sendsales"><i class="material-icons">email</i>Send today's sales to admin</a>
+                </div>
+                <div class="forms" ng-switch-when="records_form">
+                    <form action="/view" method="POST">
+                        <h2>View monthly sales</h2><br>
+                        <label for="month">Select month:</label>
+                        <select name="month" id="month">
+                            <option ng-repeat="x in months">{{x}}</option>
+                        </select>
+                        <button type="submit">View Records</button>
+                    </form>
+                </div>
+                <div class="forms" ng-switch-when="contact_form">
+                    <form action="/contact" method="POST">
+                        <h2><u>Contact Us</u></h2><br>
+                        <label for="name">Your name:</label><br>
+                        <input type="text" name="name" id="name" placeholder="e.g John Doe" required><br>
+                        <label for="email">Your email:</label><br>
+                        <input type="email" name="email" id="email" placeholder="e.g johndoe@gmail.com" required><br>
+                        <label for="subject">Subject:</label><br>
+                        <input type="text" name="subject" id="subject" placeholder="Subject" required><br>
+                        <label for="message">Message:</label><br>
+                        <textarea name="message" id="message" rows="4" cols="55" placeholder="Leave a message" required></textarea><br>
+                        <button type="submit"><i class="material-icons" style="font-size:15px">chat</i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller ("myCtrl", function($scope) {
+                $scope.months = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December'
+                ];
+                $scope.showMenu = false;
+                $scope.changeDec = function() {
+                    $scope.showMenu =!$scope.showMenu;
+                }
+                $scope.tab = "sales_form";
+                $scope.sales_tab = function() {
+                    $scope.tab = "sales_form";
+                }
+                $scope.search_tab = function() {
+                    $scope.tab = "search_form";
+                }
+                $scope.records_tab = function() {
+                    $scope.tab = "records_form";
+                }
+                $scope.contact_tab = function() {
+                    $scope.tab = "contact_form";
+                }
+                $scope.resetForm = function() {
+                    document.getElementById("item").value = "";
+                    document.getElementById("amount").value = "";
+                    document.getElementById("price").value = "";
+                }
+            })
+        </script>
+    </body>
+</html>

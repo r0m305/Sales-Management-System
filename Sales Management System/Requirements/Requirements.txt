@@ -1,0 +1,3 @@
+MySql
+NodeJs - Packages: mysql2, body-parser, nodemailer, express
+npm

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stock Management</title>
+        <link rel="stylesheet" href="/sales.css">
+        <link rel="icon" href="/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-app="myApp" ng-controller="myCtrl">
+            <div class="formcontainer" ng-switch="tab">
+                <h2 class="manage"><i class="material-icons" style="font-size:25px">add_shopping_cart</i> STOCK MANAGEMENT SYSTEM</h2>
+                <ul>
+                    <li ng-click="hideMenu()" style="width: 90%;"><i class="material-icons" style="font-size:15px">menu</i>Menu</li>
+                </ul>
+                <ul ng-hide="hideM">
+                    <li ng-click="stocktab()">Add to stock</li>
+                    <li ng-click="newstocktab()">Add new item to stock</li>
+                    <li ng-click="deplete_tab()">Stock list</li>
+                </ul>
+                <div class="forms" ng-switch-when="stock_form">
+                    <h2><u>Add items to existing stock</u></h2><br>
+                    <form action="/addstock" method="POST">
+                        <label for="item">Item Name:</label><br>
+                        <input type="text" name="item" id="item" placeholder="Name of item" required><br>
+                        <label for="amount">Quantity added:</label><br>
+                        <input type="number" name="amount" id="amount" placeholder="Quantity being restocked" required><br>
+                        <button type="submit"><i class="material-icons" style="font-size:15px">add_shopping_cart</i>Add to stock</button>
+                        <button class="reset" type="button" ng-click="resetForm()"><i class="material-icons" style="font-size: 15px;">cached</i>Reset</button><br><br>
+                        <a href="/"><i class="material-icons" style="font-size:17px">reply</i>Go back to sales management</a><br>
+                    </form>
+                </div>
+                <div class="forms" ng-switch-when="newstock_form">
+                    <h2 style="border: 2px solid black;">Add previously unregistered item to stock.</h2><br>
+                    <form action="/newstock" method="POST">
+                        <label for="item1">Item Name:</label><br>
+                        <input type="text" name="item1" id="item1" placeholder="New item to be registered" required><br>
+                        <label for="amount1">Quantity added:</label><br>
+                        <input type="number" name="amount1" id="amount1" placeholder="Quantity to be stocked" required><br>
+                        <button type="submit"><i class="material-icons" style="font-size:15px">add_shopping_cart</i>Add to stock</button>
+                        <button class="reset" type="button" ng-click="resetForm1()"><i class="material-icons" style="font-size: 15px;">cached</i>Reset</button><br><br>
+                        <a href="/"><i class="material-icons" style="font-size:17px">reply</i>Go back to sales management</a><br>
+                    </form>
+                </div>
+                <div class="forms" ng-switch-when="deplete_form">
+                    <h2 style="margin-bottom: 10px; margin-top: 15px; border: 2px solid black;">List of available and depleting items.</h2>
+                    <a href="/deplete" target="_blank" class="btn-link" style="margin: 10px;"><i class="material-icons" style="font-size:17px">warning</i>View depleting items</a><br><br>
+                    <a href="/stocklist" target="_blank" class="btn-link"><i class="material-icons" style="font-size:17px">assignment</i>View stock list</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("myCtrl", function($scope) {
+                $scope.tab = "stock_form";
+                $scope.hideM = true;
+                $scope.stocktab = function() {
+                    $scope.tab = "stock_form";
+                }
+                $scope.newstocktab = function() {
+                    $scope.tab = "newstock_form";
+                }
+                $scope.deplete_tab = function() {
+                    $scope.tab = "deplete_form";
+                }
+                $scope.resetForm = function() {
+                    document.getElementById("item").value = "";
+                    document.getElementById("amount").value = "";
+                }
+                $scope.resetForm1 = function() {
+                    document.getElementById("item1").value = "";
+                    document.getElementById("amount1").value = "";
+                }
+                $scope.hideMenu = function() {
+                    $scope.hideM = !$scope.hideM;
+                }
+            });
+        </script>
+    </body>
+</html>

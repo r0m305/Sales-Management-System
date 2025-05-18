@@ -5,9 +5,9 @@ var nodemailer = require ("nodemailer");
 
 var con = mysql.createConnection ({
     host: 'localhost',
-    user: 'root',
-    password: 'final',
-    database: 'salesdatabase'
+    user: 'username',
+    password: 'password',
+    database: 'mydatabase'
 });
 var transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -15,14 +15,14 @@ var transporter = nodemailer.createTransport({
                 port: 465,
                 secure: true,
                 auth: {
-                    user: "clinicsalesdb@gmail.com",
-                    pass: "jtkm vwcz dson yemt"
+                    user: "your email",
+                    pass: "app pass key"
                 }
             });
 function sendEmail (subject, html) {
     var mailOptions = {
-            from:"clinicsalesdb@gmail.com",
-            to: "lewiswaigwa30@gmail.com",
+            from:"your email",
+            to: "target",
             subject: subject,
             html: html
         };
